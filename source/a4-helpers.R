@@ -10,6 +10,7 @@ get_data <- function(num_records=-1) {
   df <- read.csv(fname, nrows=num_records)
   return(df)
 }
+df <- read.csv("https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv", nrows=-1)
 
 # Processing places ----
 # NOTE: For these functions to work, the dataframe `incarceration_df` must 

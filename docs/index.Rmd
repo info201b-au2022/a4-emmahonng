@@ -1,45 +1,52 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "A4: Examining Incarceration Trends in the US"
+author: "Emma Hong"
+date: '2022-11-20'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+The purpose of this assignment is to examine the incarceration trends present in a dataset by the Vera Project. This assignment focuses on specific trends such as the rise of incarcerated populations over the past forty years, the differences between male and female incarcerated populations, and the distribution of racial groups in prisons across the United States. 
 
 ## Introduction 
-[TODO]
+One of the most prevalent societal issues in the United States is that of mass incarceration, or the abundant imprisonment of individuals within the United States. The issue of mass incarceration disproportionately affects people of color, most commonly of Black, Latino, or Native American racial backgrounds, immigrants, and low-income or impoverished individuals. Oftentimes individuals are wrongly imprisoned due to skewed prosecution systems or “tough-on-crime” laws created during this era of mass incarceration, and are subjected to stay within the prison system due to high bail costs.
+
+The Vera Project’s overarching purpose is to end mass incarceration within the United States. Some methods employed by the Project to achieve this goal include providing educational opportunities to incarcerated individuals, providing legal representation for individuals who otherwise couldn’t afford it, reducing reliance on jails, and numerous other projects which aim to reduce inequalities or systems that lead to high incarceration rates. The Vera Project also collects and makes available data collected from prisons throughout the United States which, when analyzed, display the disparities that exist within the prison system. 
+
+The purpose of this assignment is to analyze one of the Vera Project’s available data sets on incarceration trends and to use that data to identify areas of inequality within this country’s prison systems. This will involve examining rising prison populations, comparing the racial backgrounds and gender of incarcerated individuals, and looking into the geography of incarceration throughout the United States. It’s important to examine these inequalities so as to raise awareness of the issues which permeate our societal structures, and to aid both individuals who are currently being impacted by the issue of mass incarceration, and those who are likely to be incarcerated in the future. 
 
 ## Data Summary 
-[TODO]
+To examine how prison populations have increased since the 1970s, I summarized the average change in prison populations between the years of 1975 and 2015, a 40 year gap. In joining the two dataframes which detailed the average prison population in 1975 and 2015, I found the average difference in prison populations between those years. The state with the highest average change in population was California, with an average increase of 869 prisoners statewide. The state with the lowest average change in population was DC, which had an average decrease of 274 prisoners throughout the district. Nationally, prison populations increased by 209 individuals from 1975 to 2015. That value reveals the extent to which mass incarceration has increased over the past four decades, and examining the state-specific data lays the groundwork for explaining why certain states have higher rates of incarceration; for example, larger states such as California have high rates of incarceration due to higher population numbers, whereas most midwestern states had an average increase of less than 50 individuals over 40 years.  
 
-[TODO ... other sections ... See Canvas for details]
+## Growth of the United States Prison Population
+```{r echo=FALSE}
+plot_jail_pop_for_us()
+```
 
-_All the very best with your work!_
+This chart investigates the question of “How has the jail population of the United States increased from 1970 to 2018?” The clear pattern exemplified by this graph is the rapid increase in jail populations over the past 50 years, with the US jail population increasing by 600,000 from 1980 to 2010. This increase is primarily a result of Presidential and Congressional lawmaking, with “Law and Order” policies and the “War on Crime” dramatically increasing jail populations. After 2010, there is a slight dip in jail populations, but the jail population in 2018 is still around 700,000.
 
+## Growth of Prison Population by State
+```{r echo=FALSE}
+plot_jail_pop_by_states(c("CA", "WA", "OR"))
+```
+
+This chart investigates the question of “How have jail populations increased in states throughout the United States from 1970 to 2018?” and specifically examines the states of California, Oregon, and Washington. These states were chosen because they represent overall trends in the West Coast. The jail population of California is consistently much higher than Oregon and Washington, with the California jail population greater than its counterparts by around 200,000 in 1970, and around 600,000 in 2018. California’s jail population showed its greatest increase from 1980 to 1990, growing by about 400,000, and in those same years the jail populations of Oregon and Washington both grew by less than 100,000. 
+
+## Gender Differences in United States Prison Populations
+``` {r echo=FALSE}
+plot_gender_pop()
+```
+
+This plot investigates the question of “What is the difference between Male and Female Jail populations from 1970 to 2018?” The graph shows that since 1970, the male jail population has consistently been higher than the female jail population by a significant amount. Both jail populations increased the most between the years of 1980 and around 2008, with the female jail population increasing by about 75,000 and the male jail population increasing by around 550,000. The male jail population experienced a slight decrease after 2008, going from a total of almost 700,000 to 600,000, but the female jail population has remained generally unchanged since 2008, with the total population staying at around 100,000 individuals. This chart supports the claim that males are more likely to be incarcerated than females, but it does not answer the question of why the gap between the two groups is so large. 
+
+## Proportion of Black Jail Populations in the United States
+``` {r echo=FALSE, message=FALSE}
+get_map()
+```
+
+This map examines the question of “Where in the United States is the ratio of Black incarcerated individuals highest?” This map answers this question by looking at the average percentage of Black individuals in jails in the year 2018, the most recent year provided on the dataset. The map shows that the greatest proportion of Black incarcerated individuals is gathered in the southeast, with states such as Louisiana, Mississippi, and South Carolina housing an average Black jail population of over 50%. The lowest percentages occur in the midwest and northeast, which, on average, have Black jail populations of less than 10%. 
